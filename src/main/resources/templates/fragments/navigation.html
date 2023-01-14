@@ -1,0 +1,38 @@
+<th:block>
+  <th:block sec:authorize="isAnonymous()">
+
+    <nav class="nav">
+      <a class="nav-link" th:href="@{/}">Home</a>
+      <a class="nav-link" th:href="@{/users/register}">Register</a>
+      <a class="nav-link" th:href="@{/users/login}">Login</a>
+    </nav>
+  </th:block>
+
+  <th:block sec:authorize="isAuthenticated()">
+    <nav class="nav">
+      <a class="nav-link" th:href="@{/home}">Home</a>
+      <a class="nav-link" th:href="@{/users/profile}">Profile</a>
+      <th:block sec:authorize="hasRole('ADMIN')">
+        <span>
+          Admin
+          <div>
+            <a class="nav-link" th:href="@{/users/all}">All Users</a>
+            <hr/>
+            <a class="nav-link" th:href="@{/categories/all}">All Categories</a>
+            <a class="nav-link" th:href="@{/categories/add}">Add Category</a>
+            <hr/>
+            <a class="nav-link" th:href="@{/books/all}">All Books</a>
+            <a class="nav-link" th:href="@{/books/add}">Add Book</a>
+            <hr/>
+            <a class="nav-link" th:href="@{/news/all}">All News</a>
+            <a class="nav-link" th:href="@{/news/add}">Add News</a>
+          </div>
+        </span>
+      </th:block>
+      <a class="nav-link" th:href="@{/news/all}">News</a>
+      <a class="nav-link" th:href="@{/cart/details}">Shopping Cart</a>
+      <a class="nav-link" th:href="@{/logout}">Logout</a>
+    </nav>
+  </th:block>
+
+</th:block>

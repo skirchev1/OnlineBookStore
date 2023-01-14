@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:insert="~{/fragments/head}"></th:block>
+<body>
+<th:block th:insert="~{/fragments/navigation}"></th:block>
+<th:block th:insert="~{/fragments/header}"></th:block>
+<main>
+    <div class="header-img"></div>
+
+    <h3 th:text="${news.name}"></h3>
+
+    <div th:text="${news.text}" class="news-details-description"></div>
+
+    <th:block sec:authorize="hasRole('ADMIN')">
+        <a th:href="@{/news/edit/{id}(id=${news.id})}" class="link-orange-btn">Edit</a>
+        <a th:href="@{/news/delete/{id}(id=${news.id})}" class="link-gray-btn">Delete</a>
+    </th:block>
+</main>
+<th:block th:insert="~{/fragments/footer}"></th:block>
+</body>
+</html>

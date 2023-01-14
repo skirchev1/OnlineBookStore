@@ -1,0 +1,303 @@
+body {
+  margin: 0px;
+  font-family: 'Rosario', Arial, sans-serif;
+}
+
+header {
+  padding: 20px 45px;
+  height: 35px;
+  box-shadow: inset 0px -1px 2px #f3f3f3;
+}
+
+header > h1 {
+  margin: 0px auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+header > h1::after {
+  content: '';
+  display: block;
+  margin-top: -20px;
+  border-top: 2px solid #e5e5e5;
+}
+
+header > h1 > span {
+  padding: 0px 20px;
+  line-height: 1;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #ffffff;
+}
+
+footer {
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
+  color: #e0deda;
+  background-color: #000000;
+}
+
+nav {
+  padding: 6px 20px;
+  background-color: #464646;
+}
+
+nav > a,
+nav > span {
+  margin-right: 16px;
+  padding-bottom: 6px;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px #000000;
+  color: #e0deda;
+}
+
+/*nav > a:last-child {*/
+/*  margin-right: 0px;*/
+/*  float: right;*/
+/*}*/
+
+nav > span > div {
+  margin-top: 5px;
+  margin-left: 128px;
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  visibility: hidden;
+  box-shadow: 2px 2px 4px #8c8c8c;
+  background-color: #464646;
+  z-index: 1;
+}
+
+nav > span:hover div {
+  visibility: visible;
+}
+
+nav > span > div > a {
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px #000000;
+  color: #e0deda;
+}
+
+main {
+  height: calc(100vh - 129px);
+  background-color: #f3f3f3;
+  text-align: center;
+  overflow: auto;
+}
+
+main .shopping-cart {
+  width: unset;
+}
+
+main .shopping-cart .total-price {
+  margin: 20px auto 0px auto;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+main .shopping-cart .total-price span:last-child {
+  margin-left: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+main input:not([type='submit']),
+main textarea,
+main select {
+  padding: 8px 20px;
+  width: 230px;
+  box-sizing: content-box;
+  border-radius: 4px;
+  border: 2px solid #d4d4d4;
+  resize: none;
+}
+
+main input:not([type='submit']):focus,
+main textarea:focus,
+main select:focus {
+  outline: none;
+  border: 2px solid #fc751b;
+}
+
+main input[type='submit'] {
+  margin: 30px auto;
+  padding: 10px 20px;
+  display: block;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #fc751b;
+  cursor: pointer;
+}
+
+main input[type='submit']:hover {
+  opacity: 0.8;
+}
+
+main button {
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+main > h2 {
+  width: 860px;
+  margin: 20px auto;
+  font-size: 48px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+main > h3 {
+  margin: 10px auto;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+main > h4 {
+  font-weight: normal;
+}
+
+main > form {
+  margin: 40px auto 0px auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+main > form label {
+  margin-top: 16px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+main table {
+  margin: 40px auto;
+  width: 75%;
+  text-align: left;
+}
+
+main table > thead {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+main table th {
+  padding-bottom: 10px;
+}
+
+main table td {
+  height: 50px;
+}
+
+/*main table > tbody > tr > td > a{*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  !*background-color: 'red';*!*/
+/*}*/
+
+main table > tbody .book-quantity {
+  width: 45px;
+  padding: 8px 4px 8px 14px;
+}
+
+main table .row-number {
+  width: 40px;
+}
+
+main table .row-price,
+main table .row-quantity {
+  width: 120px;
+}
+
+main table .row-buttons {
+  width: 200px;
+}
+
+main table .row-select {
+  width: 240px;
+}
+
+.link-gray-btn,
+.link-red-btn,
+.link-orange-btn {
+  padding: 6px 16px;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.link-red-btn{
+  background-color: #ff0022;
+}
+
+.link-orange-btn {
+  background-color: #fc751b;
+}
+
+.link-gray-btn {
+  background-color: #464646;
+}
+
+.link-gray-btn:hover,
+.link-red-btn:hover,
+.link-orange-btn:hover {
+  opacity: 0.8;
+}
+
+.header-img {
+  height: 420px;
+  background-image: url('https://res.cloudinary.com/svilen/image/upload/v1596099708/background_gizw94.jpg');
+  /*background-position: 0px -100px;*/
+  /*background-repeat: no-repeat;*/
+  /*filter: brightness(0.5);*/
+  background-size: auto 300%;
+  background-position:center -120px;
+  background-repeat: no-repeat;
+  background-color: #000000;
+  filter: brightness(0.5);
+}
+
+.profile-img {
+  width: 35px;
+}
+
+.text-intro {
+  margin-top: 70px;
+  font-size: 24px;
+}
+
+.link-intro {
+  text-decoration: none;
+  color: #fc751b;
+}
+
+.link-intro:hover {
+  text-decoration: underline;
+}
+
+.book-details-category {
+  font-weight: bold;
+}
+
+.book-details-description {
+  margin: 24px auto;
+  width: 60%;
+}
+
+.book-details-price {
+  margin-bottom: 16px;
+  font-weight: bold;
+}

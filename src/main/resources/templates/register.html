@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<th:block th:include="~{/fragments/head}"></th:block>
+<body>
+<th:block th:include="~{/fragments/navigation}"></th:block>
+<th:block th:include="~{/fragments/header}"></th:block>
+<main>
+    <div class="header-img"></div>
+    <h2>Register</h2>
+    <h4>Please fill in your details below</h4>
+    <form th:action="@{/users/register}" th:method="POST">
+<!--        <input type="hidden" name="_csrf" value="d1c62388-8829-47a9-b022-f0d30553d8e5"/>-->
+
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" placeholder="Enter First Name" name="firstName" required="required" minlength="2" maxlength="10"/>
+
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" placeholder="Enter Last Name" name="lastName" required="required" minlength="2" maxlength="10"/>
+
+        <label for="username">Username</label>
+        <input id="username" type="text" placeholder="Enter Username" name="username" required="required" minlength="2" maxlength="10"/>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Enter Email" name="email" required="required" />
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Enter Password" name="password" required="required" minlength="6" />
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password" placeholder="Confirm Password" name="confirmPassword" required="required"/>
+
+        <input type="submit" value="Register"/>
+    </form>
+</main>
+<th:block th:insert="~{/fragments/footer}"></th:block>
+</body>
+</html>

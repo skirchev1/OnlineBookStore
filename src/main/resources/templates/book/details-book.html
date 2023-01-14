@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+  <th:block th:insert="~{/fragments/head}"></th:block>
+  <body>
+    <th:block th:insert="~{/fragments/navigation}"></th:block>
+    <th:block th:insert="~{/fragments/header}"></th:block>
+    <main>
+      <div class="header-img"></div>
+      <h2>Book Details</h2>
+
+      <h3 th:text="'Title: ' + ${book.name}"></h3>
+
+      <div th:text="'Description: ' + ${book.description}" class="book-details-description"></div>
+      <div th:text="'Price: ' + ${book.price} + '$'" class="book-details-price"></div>
+
+      <form th:action="@{/cart/add-book}" th:method="POST">
+        <label for="quantity">Quantity</label>
+        <input id="quantity" type="number" name="quantity" min="1" max="10" step="1" required="required"/>
+
+        <input type="hidden" name="id" th:value="${book.id}" >
+        <button type="submit" class="link-red-btn">Add to Cart</button>
+      </form>
+
+    </main>
+    <th:block th:insert="~{/fragments/footer}"></th:block>
+  </body>
+</html>

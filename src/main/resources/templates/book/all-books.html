@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+  <th:block th:insert="~{/fragments/head}"></th:block>
+  <body>
+    <th:block th:insert="~{/fragments/navigation}"></th:block>
+    <th:block th:insert="~{/fragments/header}"></th:block>
+    <main>
+      <h2>All Books</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="row-number">#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th class="row-price">Price</th>
+            <th class="row-buttons"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <th:block th:each="book, i : ${books}">
+            <tr>
+              <td th:text="${i.index + 1}"></td>
+              <td th:text="${book.name}"></td>
+              <td th:text="${book.description}"></td>
+              <td th:text="${book.price} + '$'"></td>
+              <td>
+                <a th:href="@{/books/edit/{id}(id=${book.id})}" class="link-orange-btn">Edit</a>
+                <a th:href="@{/books/delete/{id}(id=${book.id})}" class="link-gray-btn">Delete</a>
+              </td>
+            </tr>
+          </th:block>
+        </tbody>
+      </table>
+    </main>
+    <th:block th:insert="~{/fragments/footer}"></th:block>
+  </body>
+</html>

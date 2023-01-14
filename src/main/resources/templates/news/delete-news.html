@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:insert="~{/fragments/head}"></th:block>
+<body>
+<th:block th:insert="~{/fragments/navigation}"></th:block>
+<th:block th:insert="~{/fragments/header}"></th:block>
+<main>
+    <h2>Edit News</h2>
+    <form th:action="@{/news/delete/{id}(id=${news.id})}" th:method="POST">
+        <input type="hidden" name="_csrf" value="98a0de7e-e307-41ee-834c-21b6875af8b8"/>
+
+        <label for="add-news-name">Name</label>
+        <input id="add-news-name" type="text" name="name" th:value="${news.name}" readonly=""/>
+
+        <label for="news-text">News Body</label>
+        <textarea id="news-text" type="text" rows="10" name="text" th:utext="${news.text}" readonly=""></textarea>
+
+        <input type="submit" value="Delete News" />
+    </form>
+</main>
+<th:block th:insert="~{/fragments/footer}"></th:block>
+</body>
+</html>

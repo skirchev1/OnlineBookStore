@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <!-- block head -->
+  <th:block th:insert="~{/fragments/head}"></th:block>
+  <!-- block head -->
+  <body>
+    <!-- block navigation  -->
+    <th:block th:insert="~{/fragments/navigation}"></th:block>
+    <!-- block navigation  -->
+    <!-- block header -->
+    <th:block th:insert="~{/fragments/header}"></th:block>
+    <!-- block header -->
+    <main>
+      <div class="header-img"></div>
+      <h2>Shopping Cart</h2>
+      <form th:action="@{/cart/checkout}" th:method="POST" class="shopping-cart">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th class="row-price">Price</th>
+              <th class="row-quantity">Quantity</th>
+              <th class="row-buttons"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <th:block th:each="book : ${#session.getAttribute('shopping-cart')}" th:object="${book}">
+              <tr >
+                <td th:text="*{bookViewModel.name}" ></td>
+                <td th:text="*{bookViewModel.description}"></td>
+                <td th:text="*{bookViewModel.price}"></td>
+                <td th:text="*{quantity}"></td>
+                <td>
+                    <form th:action="@{/cart/remove-book}" th:method="delete">
+                            <input type="hidden" name="id" th:value="*{bookViewModel.id}">
+                            <input type="submit" value="Remove"/>
+                    </form>
+                </td>
+              </tr>
+            </th:block>
+          </tbody>
+        </table>
+        <div class="total-price">
+          <span>Total Price: </span>
+          <span th:text="*{total}"></span>
+        </div>
+        <input type="submit" value="Buy Books" />
+      </form>
+    </main>
+    <!-- block footer -->
+    <th:block th:insert="~{/fragments/footer}"></th:block>
+    <!-- block footer -->
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+  <th:block th:insert="~{/fragments/head}"></th:block>
+  <body>
+    <th:block th:insert="~{/fragments/navigation}"></th:block>
+    <th:block th:insert="~{/fragments/header}"></th:block>
+    <main>
+      <div class="header-img"></div>
+      <h2>
+        <img src="https://res.cloudinary.com/svilen/image/upload/v1596099772/profileIcon_go9vrx.svg" alt="profileIcon" class="profile-img"/>
+
+        <span th:text="${model.firstName}"></span>
+        <span th:text="${model.lastName}"></span>
+      </h2>
+      <hr />
+      <h3>Edit Profile</h3>
+      <form th:action="@{/users/edit}" th:method="PATCH">
+        <input type="hidden" name="_csrf" value="98a0de7e-e307-41ee-834c-21b6875af8b8"/>
+
+        <label for="firstName">First Name</label>
+        <input th:value="${model.firstName}" id="firstName" type="text" placeholder="First Name" name="firstName" readonly=""/>
+
+        <label for="lastName">Last Name</label>
+        <input th:value="${model.lastName}" id="lastName" type="text" placeholder="Last Name" name="lastName" readonly=""/>
+
+        <label for="username">Username</label>
+        <input th:value="${model.username}" id="username" type="text" placeholder="Username" name="username" readonly=""/>
+
+        <label for="email">Email</label>
+        <input th:value="${model.email}" id="email" type="email" placeholder="Email" name="email"/>
+
+        <label for="oldPassword">Old Password</label>
+        <input id="oldPassword" type="password" placeholder="Old Password" name="oldPassword" required=""/>
+
+        <label for="newPassword">New Password</label>
+        <input id="newPassword" type="password" placeholder="New Password" name="password" required="required" minlength="6"/>
+
+        <label for="confirmPassword">Confirm New Password</label>
+        <input id="confirmPassword" type="password" placeholder="Confirm New Password" name="confirmPassword"/>
+
+        <input type="submit" value="EDIT" />
+      </form>
+    </main>
+    <th:block th:insert="~{/fragments/footer}"></th:block>
+  </body>
+</html>

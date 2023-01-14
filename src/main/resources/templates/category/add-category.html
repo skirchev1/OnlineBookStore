@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+  <th:block th:insert="~{/fragments/head}"></th:block>
+  <body>
+    <th:block th:insert="~{/fragments/navigation}"></th:block>
+    <th:block th:insert="~{/fragments/header}"></th:block>
+    <main>
+      <h2>Add Category</h2>
+      <form th:action="@{/categories/add}" th:method="POST">
+        <input type="hidden" name="_csrf" value="98a0de7e-e307-41ee-834c-21b6875af8b8"/>
+
+        <label for="add-category-name">Name</label>
+        <input id="add-category-name" type="text" placeholder="Enter Category Name" name="name" required="required" minlength="4"/>
+
+        <input type="submit" value="Add Category" />
+      </form>
+    </main>
+    <th:block th:insert="~{/fragments/footer}"></th:block>
+  </body>
+</html>

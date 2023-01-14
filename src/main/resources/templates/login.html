@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <th:block th:insert="~{/fragments/head}"></th:block>
+  <body>
+    <th:block th:insert="~{/fragments/navigation}"></th:block>
+    <th:block th:insert="~{/fragments/header}"></th:block>
+    <main>
+      <div class="header-img"></div>
+      <h2>Login</h2>
+      <h4>Please login into your account</h4>
+
+        <th:block th:if="${param.error}">
+            <div class="text-center" style="color: red"
+                 th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}">
+                <!--            Bad credentials!-->
+            </div>
+        </th:block>
+
+      <form th:action="@{/users/login}" method="post">
+<!--        <input type="hidden" name="_csrf" value="d1c62388-8829-47a9-b022-f0d30553d8e5"/>-->
+
+        <label for="username">Username</label>
+        <input id="username" type="text" placeholder="Username" name="username" class="form-control" required="required"/>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Password" name="password" class="form-control" required="required"/>
+
+        <input type="submit" value="Login"/>
+      </form>
+
+    </main>
+    <th:block th:insert="~{/fragments/footer}"></th:block>
+  </body>
+</html>

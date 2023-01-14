@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <th:block th:insert="~{/fragments/head}"></th:block>
+  <body>
+    <th:block th:insert="~{/fragments/navigation}"></th:block>
+    <th:block th:insert="~{/fragments/header}"></th:block>
+    <main>
+      <h2>All Users</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="row-number">#</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th class="row-select">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <th:block th:each="user, i : ${users}">
+            <tr>
+              <td th:text="${i.index + 1}">1</td>
+              <td>
+                <span th:text="${user.firstName}"></span>
+                <span th:text="${user.lastName}"></span>
+              </td>
+              <td th:text="${user.username}"></td>
+              <td th:text="${user.email}"></td>
+              <td th:text="${user.authorities}"></td>
+              <td>
+                <th:block th:if="${#lists.contains(user.authorities, 'ROLE_USER')
+                                && !#lists.contains(user.authorities, 'ROLE_ADMIN')}">
+                  <form th:action="@{/users/set-admin/{id}(id=${user.id})}" th:method="post" class="row-select">
+                    <input type="hidden" name="_csrf" value="98a0de7e-e307-41ee-834c-21b6875af8b8"/>
+                    <button class="btn link-orange-btn">ADMIN</button>
+                  </form>
+                </th:block>
+                <th:block th:if="${#lists.contains(user.authorities, 'ROLE_USER')
+                                && #lists.contains(user.authorities, 'ROLE_ADMIN')}">
+                  <form th:action="@{/users/set-user/{id}(id=${user.id})}" th:method="post" class="row-select">
+                    <input type="hidden" name="_csrf" value="98a0de7e-e307-41ee-834c-21b6875af8b8"/>
+                    <button class="btn link-orange-btn">USER</button>
+                  </form>
+                </th:block>
+              </td>
+            </tr>
+          </th:block>
+        </tbody>
+      </table>
+    </main>
+    <th:block th:insert="~{/fragments/footer}"></th:block>
+  </body>
+</html>
